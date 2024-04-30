@@ -26,7 +26,7 @@ export default defineConfig({
       },
     }),
   ],
-  define: { 'process.env': {} },
+  base: '/post-pet',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
