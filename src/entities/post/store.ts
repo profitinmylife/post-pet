@@ -3,7 +3,7 @@ import { httpClient, PostType } from '../../shared'
 
 const client = httpClient()
 
-export const usePostsStore = defineStore('posts', {
+export const usePostStore = defineStore('posts', {
   state: () => ({
     posts : [] as PostType[],
   }),

@@ -1,12 +1,12 @@
 import { computed, onMounted } from 'vue'
-import { usePostsStore } from '../../../entities'
+import { usePostStore } from '../../../entities'
 
 export const useMain = () => {
   onMounted(async () => {
-    await usePostsStore().fetchPosts()
+    await usePostStore().fetchPosts()
   })
 
-  const posts = computed(() => usePostsStore().getPosts)
+  const posts = computed(() => usePostStore().getPosts)
 
   return {
     posts

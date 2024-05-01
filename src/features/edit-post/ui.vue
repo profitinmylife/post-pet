@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { PropType, ref, watch } from 'vue'
 import type { PostType } from '../../shared'
-import { usePostsStore } from '../../entities'
+import { usePostStore } from '../../entities'
 
 const props = defineProps({
   value: {
@@ -15,11 +15,11 @@ const props = defineProps({
 })
 
 const innerValue = ref<PostType>({} as PostType);
-const store = usePostsStore()
+const store = usePostStore()
 
 watch(() => props.value, (newValue) => {
-  innerValue.value = newValue;
-}, { deep: true, immediate: true })
+  innerValue.value = {...newValue};
+}, { immediate: true, deep: true })
 
 const emit = defineEmits(['change', 'save']);
 

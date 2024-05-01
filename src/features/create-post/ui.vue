@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { PostType } from '../../shared'
-import { usePostsStore } from '../../entities'
+import { usePostStore } from '../../entities'
 
 const innerValue = ref<PostType>({} as PostType);
-const store = usePostsStore()
+const store = usePostStore()
 
 const handleSubmit = async () => {
   await store.createPost(innerValue.value)

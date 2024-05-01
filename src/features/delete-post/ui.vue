@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { usePostsStore } from '../../entities'
+import { usePostStore } from '../../entities'
 
 const props = defineProps({
   id: {
@@ -8,7 +8,7 @@ const props = defineProps({
   }
 })
 
-const store = usePostsStore()
+const store = usePostStore()
 
 const handleDelete = () => {
   store.deletePost(props.id)
