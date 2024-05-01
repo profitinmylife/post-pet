@@ -30,12 +30,9 @@ export const usePostStore = defineStore('posts', {
     async updatePost(id: number, data: PostType) {
       try {
         await client.put(id, data).then(() => {
-          this.posts.find((item: PostType) => {
-            if (item.id === id) {
-              item = data;
-              return true;
-            }
-          })
+          const currentIndex = this.posts.findIndex((item: PostType) => item.id === id)
+
+          this.posts[currentIndex] = data
         })
       } catch (e) {
         console.log(e)
@@ -44,9 +41,9 @@ export const usePostStore = defineStore('posts', {
     async deletePost(id: number) {
       try {
         await client.deleteData(`${id}`).then(() => {
-          const currentPost = this.posts.findIndex((item: PostType) => item.id === id)
+          const currentIndex = this.posts.findIndex((item: PostType) => item.id === id)
 
-          this.posts.splice(currentPost, 1)
+          this.posts.splice(currentIndex, 1)
         })
       } catch (e) {
         console.log(e)
